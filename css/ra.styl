@@ -41,42 +41,46 @@ img
   width 100%
   height 100%
 
-/* ra-panel1 is positioned on the left and is hidden when screen size is small
+/* ra-panel is positioned on the left and is hidden when screen size is small
  */
-#ra-panel-l
+#ra-panel
   width panelsize
   position absolute
   height 100%
-#ra-panel-l-content
+  max-width 100%
+  overflow-x hidden
+#ra-panel.ra-panel-hidden
+  display none !important
+#ra-panel-content
   height inherit
   width panelsize
   float left
   overflow auto
+
 
 /* ra-headmatter element contains the header, subheader, and nav
  * 
  * The ra framework will move the headmatter from to top of the screen or 
  * the top of panel1-content depending on screen size
  * 
- * ra-main-responsivemenu only appears when screen is small
- * contains buttons to show and hide side panels
  */
 #ra-headmatter
-#ra-main-responsivemenu
   width 100%
+  overflow-x auto
+  overflow-y hidden
+
+/* responsivemenu button shows/hides nav on click
+ */
+#ra-responsivemenu-btn
+  float left
+  background url('../img/menu_white.png') no-repeat center
+  width 44px
+  height 44px
+
+#ra-nav-container
   overflow auto
-
-/* responsivemenu button shows/hides left panel on click
- */
-#ra-responsivemenu-btn-l
-  float left
-/* responsivemenu button shows/hides right panel on click
- */
-#ra-responsivemenu-btn-r
-  float right
-
-#ra-responsivemenu-header
-  float left
+  height auto
+  max-height 100%
 
 /* main full screen content */
 #ra-main
@@ -84,17 +88,6 @@ img
   overflow-y auto
   width 100%
   height 100%
-
-/* right/bottom panel
- * appears at bottom of screen on large screens
- * hidden on right on small screens
- */
-#ra-panel-r
-  position absolute
-  bottom 0
-#ra-panel-r-content
-  float right
-  overflow auto
 
 /* ra-cover covers the main content on small screens when side panels are open
  * clicking on the cover returns the view to the main content
@@ -107,43 +100,42 @@ img
 
 /* large screens */
 .ra-large
-  #ra-main
-    left panelsize
-  #ra-panel-l
+  #ra-panel
     left 0
-  #ra-panel-r
-    left panelsize
-  #ra-responsivemenu
-    display none
+  #ra-responsivemenu-btn
   .ra-hidewhenlarge
     display none !important
+  
 
 /* small screens */
 .ra-small
   #ra-main
     left 0
-  #ra-panel-l
+  #ra-panel
     top 0
     right 100%
     height 100%
-  #ra-panel-r
-    height 100%
-    left 100%
-  #ra-panel-r-content
-    width panelsize
-    height 100%
   .ra-hidewhensmall
     display none !important
+  #ra-nav
+    position absolute
+    top 44px
+    left 0px
+    overflow hidden
+    width 100%
+    max-height 100%
+    z-index 10000
+  #ra-nav.ra-nav-hidden
+    max-height 0
+  #ra-headmatter
+    height 44px
+
 
 /* full screen mode */
 .ra-fullscreen
-  #ra-panel-l
-    display none
-  #ra-panel-r
+  #ra-panel
     display none
   #ra-headmatter
-    display none
-  #ra-responsivemenu
     display none
 
 /* subpanels */

@@ -4,13 +4,16 @@
  */
 /* css transitions */
 #ra-container {
-  transition: transform 0.5s;
-  -webkit-transition: -webkit-transform 0.5s;
+  transition: transform 0.25s;
+  -webkit-transition: -webkit-transform 0.25s;
 }
-#ra-panel-l,
-#ra-panel-r {
-  transition: width 0.5s;
-  -webkit-transition: width 0.5s;
+.ra-large #ra-main {
+  transition: left 0.25s, max-width 0.25s;
+  -webkit-transition: left 0.25s, max-width 0.25s;
+}
+#ra-nav {
+  transition: max-height 0.25s;
+  -webkit-transition: max-height 0.25s;
 }
 /* your styles here */
 /* #ra-container has .ra-small .ra-large or .ra-fullscreen classes
@@ -26,9 +29,9 @@
 #ra-main {
   background: #fee;
 }
-#ra-responsivemenu {
-  background: #eee;
-}
 #ra-headmatter {
   background: #ffe;
+}
+#ra-nav-container {
+  background: #eee;
 }
