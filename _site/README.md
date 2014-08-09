@@ -1,4 +1,4 @@
-Responsive App
+Responsive App v2
 ---
 A lightweight responsive framework for fullscreen web applications.
 Built in HTML, CSS3, and javascript.
@@ -59,7 +59,7 @@ Go to http://{username}/github.io/responsive-app/ to see the changes!
 
 `_includes/*` holds the html content for the app. Edit these files and `css/style.css`.
 
-GitHub Pages and Jekyll will automatically compile the `gh-pages` repository into a static site located in the `_site` folder. The `index.html` file in the base directory tells Jekyll to use the `ra.html` template which then loads up the content in the `_includes` folder. Any non-Jekyll files in the base directory including the `css` and `js` folders will be copied into the `_site` directory. 
+GitHub Pages and Jekyll will automatically compile the `gh-pages` repository into a static site located in the `_site` folder. The `index.html` loads up the content in the `_includes` folder. Any non-Jekyll files in the base directory including the `css` and `js` folders will be copied into the `_site` directory. 
 
 ra.js Options, methods, and events
 ===
@@ -72,9 +72,7 @@ Initialize the Responsive App framework using `ra = new ra({options})`.
   minWidth:640,        // minimum window width (px) for screen size to count as large, 
                        //  when window width is smaller than minWidth the layout will be condensed
   panelWidth:284,      // panel width (px) in both large screen and small screen layouts.
-  panel2MaxHeight:150, // panel 2 max content height (px) when on screen bottom (large screen layout).
   panel1:true,         // toggle panel 1 on/off
-  panel2:true          // toggle panel 2 on/off
 }
 ```
 
@@ -82,8 +80,6 @@ Initialize the Responsive App framework using `ra = new ra({options})`.
 
 The `ra` object supports the following methods
 ```
-ra.gotoPanel({panel #})  // When in small screen mode, shifts the view to the given panel
-                         //  0: main, 1: left, 2: right
 ra.resize()              // Forces ra to recalculate panel sizes
 ra.screenSize()          // Returns the current mode (#ra-container.className)
                          //  Small: 'ra-small', Large: 'ra-large', Fullscreen, 'ra-fullscreen'
@@ -104,19 +100,4 @@ ra.js will dispatch custom events on the `#ra-container` element
 'ra-panelchange'	// occurs when panel changes
 ```
 
-### Subpanels:
-
-Subpanels are full height divs inside the left hand side panel. They increase the width of the panel when shown. These are the only dynamically generated content in ra.js. Create a subpanel with `mypanel = ra.subPanel()`, fill it with `mypanel.el.appendChild({content})` and show it with `mypanel.show()`.
-
-![Subpanel](http://raw.github.com/fgassert/responsive-app/master/fullscreen-app-layout-sub.png)
-
-Attributes and methods
-```
-mypanel.el		// The DOM element, put your content in here using js
-mypanel.show()		// Show the panel
-mypanel.hide()		// Hide the panel
-mypanel.setWidth({width}) // Set panel width in px
-```
-
-Subpanels default to hidden and need to be manually shown with `mypanel.show()`. In addition, they are automatically hidden when the screen mode or current panel changes (Except on IE 8).
 
