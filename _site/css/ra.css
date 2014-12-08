@@ -38,17 +38,19 @@ img {
   width: 100%;
   height: 100%;
 }
-/* ra-panel1 is positioned on the left and is hidden when screen size is small
+/* ra-panel is positioned on the left and is hidden when screen size is small
  */
-#ra-panel-l {
+#ra-panel {
   width: 284px;
   position: absolute;
   height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
-#ra-panel-l-content {
-  height: inherit;
-  width: 284px;
-  float: left;
+#ra-panel.ra-panel-hidden {
+  display: none !important;
+}
+#ra-panel-content {
   overflow: auto;
 }
 /* ra-headmatter element contains the header, subheader, and nav
@@ -56,45 +58,34 @@ img {
  * The ra framework will move the headmatter from to top of the screen or 
  * the top of panel1-content depending on screen size
  * 
- * ra-main-responsivemenu only appears when screen is small
- * contains buttons to show and hide side panels
  */
-#ra-headmatter,
-#ra-main-responsivemenu {
+#ra-headmatter {
   width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+/* responsivemenu button shows/hides nav on click
+ */
+#ra-responsivemenu-btn {
+  float: left;
+  background: url("../img/menu_white.png") no-repeat center;
+  background: -webkit-image-set(url("../img/menu_white.png") 1x, url("../img/menu_white@2x.png") 2x);
+  width: 44px;
+  height: 44px;
+}
+#ra-nav-container {
   overflow: auto;
-}
-/* responsivemenu button shows/hides left panel on click
- */
-#ra-responsivemenu-btn-l {
-  float: left;
-}
-/* responsivemenu button shows/hides right panel on click
- */
-#ra-responsivemenu-btn-r {
-  float: right;
-}
-#ra-responsivemenu-header {
-  float: left;
+  overflow: visible\9;
+  height: auto;
 }
 /* main full screen content */
 #ra-main {
   position: absolute;
   overflow-y: auto;
+  overflow-y: visible\9;
   width: 100%;
+  max-width: 100%;
   height: 100%;
-}
-/* right/bottom panel
- * appears at bottom of screen on large screens
- * hidden on right on small screens
- */
-#ra-panel-r {
-  position: absolute;
-  bottom: 0;
-}
-#ra-panel-r-content {
-  float: right;
-  overflow: auto;
 }
 /* ra-cover covers the main content on small screens when side panels are open
  * clicking on the cover returns the view to the main content
@@ -106,18 +97,10 @@ img {
   height: 100%;
 }
 /* large screens */
-.ra-large #ra-main {
-  left: 284px;
-}
-.ra-large #ra-panel-l {
+.ra-large #ra-panel {
   left: 0;
 }
-.ra-large #ra-panel-r {
-  left: 284px;
-}
-.ra-large #ra-responsivemenu {
-  display: none;
-}
+.ra-large #ra-responsivemenu-btn,
 .ra-large .ra-hidewhenlarge {
   display: none !important;
 }
@@ -125,34 +108,36 @@ img {
 .ra-small #ra-main {
   left: 0;
 }
-.ra-small #ra-panel-l {
+.ra-small #ra-panel {
   top: 0;
   right: 100%;
-  height: 100%;
-}
-.ra-small #ra-panel-r {
-  height: 100%;
-  left: 100%;
-}
-.ra-small #ra-panel-r-content {
-  width: 284px;
   height: 100%;
 }
 .ra-small .ra-hidewhensmall {
   display: none !important;
 }
-/* full screen mode */
-.ra-fullscreen #ra-panel-l {
-  display: none;
+.ra-small #ra-nav {
+  position: absolute;
+  top: 44px;
+  left: 0px;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  z-index: 10000;
 }
-.ra-fullscreen #ra-panel-r {
-  display: none;
+.ra-small #ra-nav.ra-nav-hidden {
+  max-height: 0;
+}
+.ra-small #ra-headmatter {
+  height: 44px;
+}
+/* full screen mode */
+.ra-fullscreen #ra-panel {
+  display: none !important;
 }
 .ra-fullscreen #ra-headmatter {
-  display: none;
-}
-.ra-fullscreen #ra-responsivemenu {
-  display: none;
+  display: none !important;
 }
 /* subpanels */
 .ra-subpanel-l {
