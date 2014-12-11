@@ -287,6 +287,8 @@ var ra = function(window, document) {
 	this.getOptions = getConfig;
 	this.getCurrentPanel = function(){return currentPanel;};
 
+	this.getCurrentPanel = function(){return currentPanel;};
+
 	// call setConfig and onResize to initialize display
 	setConfig(options);
     };

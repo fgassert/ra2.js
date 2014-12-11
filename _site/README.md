@@ -11,9 +11,9 @@ Supports all modern browsers, IE 9+, iOS. Functions in IE8.
  - [ ] Add examples
 
 ### How it works
-The responsive app framework divides the screen realestate into four sections: two responsive panels, headmatter, and main content. See a [demo](http://fgassert.github.io/responsive-app/).
+The responsive app framework divides the screen realestate into four sections: two responsive panels, headmatter, and main content. See a [demo](http://fgassert.github.io/ra2.js/).
 
-![layout](http://raw.github.com/fgassert/responsive-app/master/fullscreen-app-layout.png)
+![layout](http://raw.github.com/fgassert/ra2.js/master/fullscreen-app-layout.png)
 
 The framework is designed to be easily modified by inserting HTML into these sections. Rather than creating a layout on the fly, the framework relies on static HTML and CSS for better performance.
 
@@ -36,7 +36,7 @@ Clone the master branch. All dependencies are held in the `_site` folder.
 
 **Edit these files:**
 
-`_site/index.html`: Base html. Rather than creating a layout on the fly, the framework relies on static HTML and CSS for better performance [read the source](https://github.com/fgassert/responsive-app/blob/master/_site/index.html) to see where to insert content.
+`_site/index.html`: Base html. Rather than creating a layout on the fly, the framework relies on static HTML and CSS for better performance [read the source](https://github.com/fgassert/ra2.js/blob/master/_site/index.html) to see where to insert content.
 
 `_site/css/style.css`: Additional styling information, edit this document to change framework appearance
 
@@ -55,7 +55,7 @@ The Responsive App framework is built using [Jekyll](http://jekyllrb.com) which 
 Fork this repository, switch to the `gh-pages` branch and replace `_includes/main-content.html` with your own content.
 Go to http://{username}/github.io/responsive-app/ to see the changes!
 
-`_templates/ra.html` is the main template for the Responsive app framework.
+`index.html` is the main template for the Responsive app framework.
 
 `_includes/*` holds the html content for the app. Edit these files and `css/style.css`.
 
@@ -71,8 +71,9 @@ Initialize the Responsive App framework using `ra = new ra({options})`.
 {
   minWidth:640,        // minimum window width (px) for screen size to count as large, 
                        //  when window width is smaller than minWidth the layout will be condensed
-  panelWidth:284,      // panel width (px) in both large screen and small screen layouts.
-  panel1:true,         // toggle panel 1 on/off
+  panelWidthSm:284,    // panel width (px) in small screen layout.
+  panelWidthLg:284,    // panel width (px) in large screen layout.
+  panel1:true,         // toggle panel on/off
 }
 ```
 
@@ -85,11 +86,11 @@ ra.screenSize()          // Returns the current mode (#ra-container.className)
                          //  Small: 'ra-small', Large: 'ra-large', Fullscreen, 'ra-fullscreen'
 ra.toggleFullScreen()    // Toggles fullscreen mode. 
                          //  In fullscreen mode the main content fills the entire window
+ra.togglePane		 // Toggles the panel on or off
+ra.toggleNav		 // Toggles the nav dropdown on or off on in small screen mode
 ra.setOptions({options}) // Edits the ra options and recalculates panel appearance
-ra.getOptions()           // Returns the current configuration
-ra.subPanel({children},{width})	 // Creates a subpanel div in Panel 1 
-			 // {children} can be an element or array of elements
-			 // see below for details
+ra.getOptions()          // Returns the current configuration
+ra.getCurrentPanel()	 // Returns id of curren panel
 ```
 
 **Events:**
